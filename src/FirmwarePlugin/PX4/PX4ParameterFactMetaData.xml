@@ -8480,4 +8480,179 @@ Maps the change of airspeed error to the acceleration setpoint</short_desc>
       <scope>examples/fixedwing_control</scope>
     </parameter>
   </group>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <group name="INDI Attitude Control">
+      <parameter default="0" name="MC_USE_INDI" type="INT32">
+      <short_desc>Use INDI Algorithm To Control Attitude</short_desc>
+      <long_desc>Setting this parameter to 0 will disable the INDI and enable the PID ,Setting this parameter to 1 will disable the PID and enable the INDI </long_desc>
+      <min>0</min>
+      <max>1</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+      
+      <parameter default="0" name="MC_INDI_ADAPTIVE" type="INT32">
+      <short_desc>Use Online Adaptive Learning To Find The G1 and G2 Matrix</short_desc>
+      <long_desc>Setting this parameter to 0 will disable the Adaptive Learning ,Setting this parameter to 1 will enable the Adaptive Learning </long_desc>
+      <min>0</min>
+      <max>1</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+      
+      <parameter default="0.00001" name="MC_INDI_MU" type="FLOAT">
+      <short_desc>Online Adaptive Learning Rate </short_desc>
+      <long_desc>Setting this parameter to 0 will disable the Adaptive Learning ,Setting this parameter to 1 will enable the Adaptive Learning </long_desc>
+      <min>0.0</min>
+      <max>1.0</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+      
+      <parameter default="0.005" name="MC_INDI_G1_P" type="FLOAT">
+      <short_desc>The actuator effectiveness on roll axis</short_desc>
+      <long_desc>big value means that the actuator is responds fast ,this value should be find not to set</long_desc>
+      <min>0.0</min>
+      <max>1.0</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+      
+      <parameter default="0.005" name="MC_INDI_G1_Q" type="FLOAT">
+      <short_desc>The actuator effectiveness on pitch axis</short_desc>
+      <long_desc>big value means that the actuator is responds fast ,this value should be find not to set</long_desc>
+      <min>0.0</min>
+      <max>1.0</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+      
+      <parameter default="0.0005" name="MC_INDI_G1_R" type="FLOAT">
+      <short_desc>The actuator effectiveness on yaw axis</short_desc>
+      <long_desc>big value means that the actuator is responds fast ,this value should be find not to set</long_desc>
+      <min>0.0</min>
+      <max>1.0</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+      
+      <parameter default="0.0002" name="MC_INDI_G2_R" type="FLOAT">
+      <short_desc>torque effect of spinning up a rotor</short_desc>
+      <long_desc>we can take a higher effectiveness for the model parameters than in reality in order to avoid overshooting.</long_desc>
+      <min>0.0</min>
+      <max>1.0</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+
+      <parameter default="65.0" name="MC_INDI_ERROR_P" type="FLOAT">
+      <short_desc>attitude loop p gain on roll axis</short_desc>
+      <long_desc>this value should be tune</long_desc>
+      <min>1.0</min>
+      <max>500.0</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+      
+      <parameter default="65.0" name="MC_INDI_ERROR_Q" type="FLOAT">
+      <short_desc>attitude loop p gain on pitch axis</short_desc>
+      <long_desc>this value should be tune</long_desc>
+      <min>1.0</min>
+      <max>500.0</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+      
+      <parameter default="65.0" name="MC_INDI_ERROR_R" type="FLOAT">
+      <short_desc>attitude loop p gain on yaw axis</short_desc>
+      <long_desc>this value should be tune</long_desc>
+      <min>1.0</min>
+      <max>500.0</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+      
+      <parameter default="14.0" name="MC_INDI_RATE_P" type="FLOAT">
+      <short_desc>attitude rate loop d gain on roll axis</short_desc>
+      <long_desc>this value should be tune</long_desc>
+      <min>1.0</min>
+      <max>100.0</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+      
+      <parameter default="14.0" name="MC_INDI_RATE_Q" type="FLOAT">
+      <short_desc>attitude rate loop d gain on pitch axis</short_desc>
+      <long_desc>this value should be tune</long_desc>
+      <min>1.0</min>
+      <max>100.0</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+      
+      <parameter default="14.0" name="MC_INDI_RATE_R" type="FLOAT">
+      <short_desc>attitude rate loop d gain on yaw axis</short_desc>
+      <long_desc>this value should be tune</long_desc>
+      <min>1.0</min>
+      <max>100.0</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+
+      
+      <parameter default="0.01" name="MC_INDI_ACT_P" type="FLOAT">
+      <short_desc>first order actuator dynamics on roll axis</short_desc>
+      <long_desc>this value should be find not to set :(X[t] = x[t-1] + p*(input - x[t-1]))</long_desc>
+      <min>0.00000001</min>
+      <max>1.0</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+      
+      <parameter default="0.01" name="MC_INDI_ACT_Q" type="FLOAT">
+      <short_desc>first order actuator dynamics on pitch axis</short_desc>
+      <long_desc>this value should be find not to set :(X[t] = x[t-1] + p*(input - x[t-1]))</long_desc>
+      <min>0.00000001</min>
+      <max>1.0</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+      
+      <parameter default="0.01" name="MC_INDI_ACT_R" type="FLOAT">
+      <short_desc>first order actuator dynamics on yaw axis</short_desc>
+      <long_desc>this value should be find not to set :(X[t] = x[t-1] + p*(input - x[t-1]))</long_desc>
+      <min>0.00000001</min>
+      <max>1.0</max>
+      <reboot_required>false</reboot_required>
+      <scope>modules/mc_att_control_indi</scope>
+      </parameter>
+      
+  </group>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </parameters>

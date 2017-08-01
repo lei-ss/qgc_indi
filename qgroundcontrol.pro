@@ -74,6 +74,8 @@ contains (CONFIG, QGC_DISABLE_CUSTOM_BUILD) {
 # AutoPilotPlugin classes as the base clase for your derived plugin
 # implementation.
 
+CONFIG += QGC_DISABLE_APM_PLUGIN
+CONFIG += QGC_DISABLE_APM_PLUGIN_FACTORY
 contains (CONFIG, QGC_DISABLE_APM_PLUGIN) {
     message("Disable APM Plugin")
 } else {
@@ -372,7 +374,12 @@ SOURCES += \
 # Unit Test specific configuration goes here (requires full debug build with all plugins)
 #
 
-DebugBuild { PX4FirmwarePlugin { PX4FirmwarePluginFactory  { APMFirmwarePlugin { APMFirmwarePluginFactory { !MobileBuild {
+DebugBuild {
+    PX4FirmwarePlugin
+        { PX4FirmwarePluginFactory
+            { APMFirmwarePlugin
+                { APMFirmwarePluginFactory
+                { !MobileBuild {
     DEFINES += UNITTEST_BUILD
 
     INCLUDEPATH += \
@@ -388,7 +395,7 @@ DebugBuild { PX4FirmwarePlugin { PX4FirmwarePluginFactory  { APMFirmwarePlugin {
         src/MissionManager/MissionCommandTreeTest.h \
         src/MissionManager/MissionControllerManagerTest.h \
         src/MissionManager/MissionControllerTest.h \
-        src/MissionManager/MissionItemTest.h \
+        #src/MissionManager/MissionItemTest.h \
         src/MissionManager/MissionManagerTest.h \
         src/MissionManager/SimpleMissionItemTest.h \
         src/qgcunittest/FileDialogTest.h \
@@ -416,7 +423,7 @@ DebugBuild { PX4FirmwarePlugin { PX4FirmwarePluginFactory  { APMFirmwarePlugin {
         src/MissionManager/MissionCommandTreeTest.cc \
         src/MissionManager/MissionControllerManagerTest.cc \
         src/MissionManager/MissionControllerTest.cc \
-        src/MissionManager/MissionItemTest.cc \
+        #src/MissionManager/MissionItemTest.cc \
         src/MissionManager/MissionManagerTest.cc \
         src/MissionManager/SimpleMissionItemTest.cc \
         src/qgcunittest/FileDialogTest.cc \
